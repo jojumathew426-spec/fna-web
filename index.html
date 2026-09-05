@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="FNA Interiors creates thoughtful residential and commercial interiors in Kochi, Kerala.">
+  <title>FNA Interiors — Beautiful Spaces. Thoughtfully Designed.</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --ink:#20201d;
+      --muted:#77746d;
+      --cream:#f5f2ec;
+      --sand:#e7ded1;
+      --clay:#aa7658;
+      --line:rgba(32,32,29,.13);
+      --white:#fffdf9;
+      --serif:"Playfair Display",Georgia,serif;
+      --sans:"DM Sans",Arial,sans-serif;
+      --shadow:0 18px 55px rgba(45,34,24,.12);
+    }
+    *{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{background:var(--white);color:var(--ink);font-family:var(--sans);line-height:1.5;overflow-x:hidden}
+    img{display:block;width:100%;object-fit:cover}
+    a{text-decoration:none;color:inherit}
+    button,input,select,textarea{font:inherit}
+    .container{width:min(1180px,calc(100% - 48px));margin:auto}
+    .eyebrow{font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--clay);font-weight:700}
+    h1,h2,h3{font-weight:500;line-height:1.08}
+    h1,h2{font-family:var(--serif)}
+    h1{font-size:clamp(52px,7.5vw,102px);letter-spacing:-.05em}
+    h2{font-size:clamp(39px,5vw,66px);letter-spacing:-.04em}
+    h3{font-size:22px}
+    .btn{display:inline-flex;align-items:center;justify-content:center;gap:12px;padding:15px 22px;border:1px solid var(--ink);font-size:12px;letter-spacing:.08em;text-transform:uppercase;transition:.3s ease;cursor:pointer}
+    .btn:hover{background:var(--ink);color:var(--white);transform:translateY(-2px)}
+    .btn.dark{background:var(--ink);color:white}.btn.dark:hover{background:var(--clay);border-color:var(--clay)}
+    .btn.light{border-color:rgba(255,255,255,.6);color:white}.btn.light:hover{background:white;color:var(--ink)}
+    .arrow{font-size:17px;line-height:0}
+    header{position:absolute;z-index:10;top:0;width:100%;color:white}
+    nav{height:92px;display:flex;align-items:center;justify-content:space-between}
+    .logo{display:flex;align-items:center;gap:11px;letter-spacing:.08em}
+    .logo-mark{width:39px;height:39px;border:1px solid currentColor;display:grid;place-items:center;position:relative}
+    .logo-mark:before,.logo-mark:after{content:"";position:absolute;background:currentColor}
+    .logo-mark:before{height:1px;width:27px;transform:rotate(-38deg)}
+    .logo-mark:after{width:1px;height:27px;transform:rotate(38deg)}
+    .logo strong{font-size:18px;font-weight:700}.logo small{display:block;font-size:8px;letter-spacing:.29em;margin-top:2px}
+    .navlinks{display:flex;align-items:center;gap:31px;font-size:12px}
+    .navlinks a{opacity:.88;transition:.25s}.navlinks a:hover{opacity:1;color:#e5b99d}
+    .nav-cta{border:1px solid rgba(255,255,255,.65);padding:12px 17px;font-size:11px;letter-spacing:.08em;text-transform:uppercase}
+    .nav-cta:hover{background:#fff;color:var(--ink)}
+    .menu{display:none;background:none;border:0;color:inherit;font-size:25px}
+    .hero{min-height:760px;height:94vh;max-height:960px;position:relative;display:flex;align-items:flex-end;color:white;overflow:hidden;background:#37322d}
+    .hero:before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(20,18,15,.7),rgba(20,18,15,.1) 75%),url("https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=2200&q=88") center/cover}
+    .hero-content{position:relative;padding-bottom:105px;max-width:800px}
+    .hero h1{margin:17px 0 24px;max-width:780px}
+    .hero p{max-width:520px;font-size:16px;color:rgba(255,255,255,.82);margin-bottom:31px}
+    .scroll{position:absolute;right:40px;bottom:37px;writing-mode:vertical-rl;font-size:10px;letter-spacing:.18em;text-transform:uppercase;opacity:.7}
+    .intro{padding:130px 0 125px;background:var(--cream)}
+    .intro-grid{display:grid;grid-template-columns:1fr 1.45fr;gap:10%;align-items:start}
+    .intro-copy h2{max-width:680px;margin:20px 0 29px}
+    .intro-copy p{max-width:570px;color:var(--muted);font-size:16px}
+    .stat-row{display:flex;gap:44px;margin-top:48px;padding-top:24px;border-top:1px solid var(--line)}
+    .stat b{display:block;font-family:var(--serif);font-size:34px;font-weight:500}.stat span{font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.08em}
+    .about-img{height:510px;position:relative}
+    .about-img img{height:100%}
+    .about-card{position:absolute;bottom:-31px;left:-34px;background:var(--ink);color:white;padding:25px 28px;width:190px}.about-card b{font-family:var(--serif);font-size:28px;font-weight:500}.about-card p{font-size:11px;color:#bbb5ab;margin-top:5px}
+    .services{padding:125px 0}
+    .section-head{display:flex;justify-content:space-between;gap:30px;align-items:end;margin-bottom:55px}
+    .section-head h2{max-width:580px;margin-top:17px}
+    .section-head p{max-width:260px;color:var(--muted);font-size:14px}
+    .service-grid{display:grid;grid-template-columns:repeat(5,1fr);border-top:1px solid var(--line)}
+    .service{padding:27px 18px 20px 0;border-bottom:1px solid var(--line);transition:.3s;min-height:240px}
+    .service:not(:last-child){border-right:1px solid var(--line);padding-right:23px;margin-right:23px}
+    .service:hover{color:var(--clay);transform:translateY(-4px)}
+    .service-num{font-size:11px;color:var(--clay);margin-bottom:54px}
+    .service h3{font-family:var(--serif);font-size:24px;color:var(--ink);margin-bottom:10px}
+    .service p{font-size:13px;color:var(--muted)}
+    .projects{background:var(--ink);color:white;padding:125px 0}
+    .project-head{display:flex;justify-content:space-between;align-items:end;margin-bottom:42px}
+    .project-head h2{margin-top:17px}
+    .filters{display:flex;gap:24px;flex-wrap:wrap}
+    .filter{background:none;border:0;color:#8d8a83;font-size:12px;cursor:pointer;padding:7px 0;border-bottom:1px solid transparent}.filter.active,.filter:hover{color:white;border-color:var(--clay)}
+    .gallery{display:grid;grid-template-columns:1.28fr .72fr 1fr;grid-auto-rows:265px;gap:14px}
+    .project-card{position:relative;overflow:hidden;min-height:240px}.project-card.tall{grid-row:span 2}.project-card.wide{grid-column:span 2}
+    .project-card img{height:100%;transition:transform .7s}.project-card:hover img{transform:scale(1.05)}
+    .project-card:after{content:"";position:absolute;inset:40% 0 0;background:linear-gradient(transparent,rgba(0,0,0,.72))}
+    .project-label{position:absolute;z-index:1;bottom:21px;left:22px}.project-label small{font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:#d8b39a}.project-label h3{font-size:22px;margin-top:5px}
+    .why{padding:130px 0;background:var(--sand)}
+    .why-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:12%;align-items:start}
+    .why h2{margin-top:18px;max-width:400px}.why-intro p{color:var(--muted);max-width:330px;margin-top:25px;font-size:15px}
+    .why-list{border-top:1px solid rgba(32,32,29,.25)}.why-item{display:grid;grid-template-columns:45px 1fr 1.2fr;gap:20px;padding:25px 0;border-bottom:1px solid rgba(32,32,29,.25);align-items:start}.why-item b{font-family:var(--serif);font-size:23px;font-weight:500}.why-item h3{font-size:20px}.why-item p{font-size:13px;color:var(--muted);max-width:270px}
+    .process{padding:125px 0}.process-grid{display:grid;grid-template-columns:repeat(4,1fr);margin-top:60px}.step{border-top:1px solid var(--ink);padding:22px 20px 0 0;position:relative}.step:not(:last-child){margin-right:25px}.step:before{content:"";width:8px;height:8px;border-radius:50%;background:var(--clay);position:absolute;top:-4px;left:0}.step span{font-size:11px;color:var(--clay)}.step h3{font-family:var(--serif);margin:23px 0 10px}.step p{font-size:13px;color:var(--muted);max-width:210px}
+    .cta{padding:112px 0;background:linear-gradient(120deg,#80604d,#b18a72);color:white;text-align:center}.cta h2{font-size:clamp(40px,6vw,75px);max-width:750px;margin:17px auto 29px}.cta p{color:rgba(255,255,255,.78);margin-bottom:30px}.cta .btn{margin:0 4px}
+    footer{background:#191a18;color:white;padding:63px 0 25px}.footer-top{display:flex;justify-content:space-between;gap:40px;padding-bottom:58px}.footer-brand p{color:#989891;max-width:250px;font-size:13px;margin-top:22px}.footer-cols{display:flex;gap:75px}.footer-col h4{font-size:10px;color:#a98369;text-transform:uppercase;letter-spacing:.17em;margin-bottom:19px}.footer-col a,.footer-col p{display:block;color:#b7b7af;font-size:13px;margin-bottom:10px}.footer-col a:hover{color:white}.footer-bottom{border-top:1px solid rgba(255,255,255,.12);padding-top:19px;color:#777870;display:flex;justify-content:space-between;font-size:11px}
+    .chat-toggle{position:fixed;right:25px;bottom:25px;z-index:30;border:0;background:var(--clay);color:#fff;padding:16px 20px;border-radius:3px;box-shadow:0 8px 25px rgba(88,53,37,.28);cursor:pointer;font-size:12px;font-weight:600;letter-spacing:.03em;transition:.3s}.chat-toggle:hover{background:var(--ink);transform:translateY(-3px)}
+    .chat-panel{position:fixed;right:25px;bottom:84px;width:355px;max-width:calc(100vw - 32px);height:500px;background:#fffdf9;z-index:29;box-shadow:0 10px 45px rgba(0,0,0,.2);display:none;flex-direction:column;border:1px solid var(--line)}.chat-panel.open{display:flex;animation:up .3s ease}@keyframes up{from{opacity:0;transform:translateY(15px)}to{opacity:1;transform:none}}
+    .chat-head{background:var(--ink);color:white;padding:18px 20px;display:flex;justify-content:space-between;align-items:center}.chat-head strong{font-family:var(--serif);font-size:19px}.chat-head small{display:block;color:#bbb;font-size:10px}.chat-close{border:0;background:none;color:white;font-size:22px;cursor:pointer}.chat-body{padding:17px;overflow:auto;flex:1;background:#f8f5ef}.msg{font-size:13px;padding:11px 13px;border-radius:2px;max-width:90%;margin-bottom:10px;background:white;box-shadow:0 2px 7px #ddd7ce}.msg.bot{border-left:2px solid var(--clay)}.msg.user{margin-left:auto;background:var(--ink);color:white}.chat-actions{padding:12px;border-top:1px solid var(--line);display:flex;gap:6px}.chat-actions input{width:100%;border:1px solid var(--line);padding:11px;font-size:12px;outline:0}.chat-actions button{border:0;background:var(--clay);color:white;padding:0 13px;cursor:pointer}
+    .reveal{opacity:0;transform:translateY(22px);transition:.75s ease}.reveal.visible{opacity:1;transform:none}
+    @media(max-width:850px){.container{width:min(100% - 34px,650px)}.navlinks{display:none}.menu{display:block}.navlinks.mobile{display:flex;position:absolute;top:74px;left:17px;right:17px;background:var(--ink);padding:20px;flex-direction:column;align-items:flex-start;gap:18px}.nav-cta{display:none}.hero{min-height:680px}.hero-content{padding-bottom:75px}.intro-grid,.why-grid{grid-template-columns:1fr;gap:55px}.about-img{height:430px}.service-grid{grid-template-columns:repeat(2,1fr)}.service:not(:last-child){margin:0;padding-right:15px}.service:nth-child(2n){border-right:0;padding-left:20px}.service{min-height:205px}.gallery{grid-template-columns:1fr 1fr;grid-auto-rows:220px}.project-card.wide{grid-column:span 2}.project-card.tall{grid-row:span 1}.footer-top{flex-direction:column}.footer-cols{gap:35px;flex-wrap:wrap}}
+    @media(max-width:520px){h1{font-size:53px}.hero{height:700px}.section-head,.project-head{display:block}.section-head p{margin-top:20px}.filters{margin-top:25px;gap:16px}.gallery{display:block}.project-card{height:275px;margin-bottom:12px}.process-grid{grid-template-columns:1fr 1fr;gap:30px 15px}.step:not(:last-child){margin-right:0}.why-item{grid-template-columns:32px 1fr}.why-item p{grid-column:2}.stat-row{gap:20px}.stat b{font-size:26px}.footer-bottom{display:block}.footer-bottom span{display:block;margin-top:8px}.chat-panel{right:16px;bottom:77px}.chat-toggle{right:16px;bottom:16px}}
+  </style>
+</head>
+<body>
+  <header>
+    <nav class="container">
+      <a href="#home" class="logo" aria-label="FNA Interiors home">
+        <span class="logo-mark">F</span>
+        <span><strong>FNA</strong><small>INTERIORS</small></span>
+      </a>
+      <div class="navlinks" id="navLinks">
+        <a href="#home">Home</a><a href="#services">Services</a><a href="#projects">Projects</a><a href="#about">About</a><a href="#contact">Contact</a>
+      </div>
+      <a class="nav-cta" href="#contact">Get a Free Consultation</a>
+      <button class="menu" id="menuBtn" aria-label="Open menu">☰</button>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="container hero-content reveal">
+        <div class="eyebrow">Interior design & execution · Kochi, Kerala</div>
+        <h1>Beautiful Spaces.<br><em>Thoughtfully</em> Designed.</h1>
+        <p>We create interiors that feel personal, purposeful and enduring — from the first sketch to the final detail.</p>
+        <a class="btn light" href="#contact">Start your project <span class="arrow">↗</span></a>
+      </div>
+      <div class="scroll">Scroll to explore ↓</div>
+    </section>
+
+    <section class="intro" id="about">
+      <div class="container intro-grid">
+        <div class="intro-copy reveal">
+          <div class="eyebrow">A considered approach</div>
+          <h2>Spaces with a sense of belonging.</h2>
+          <p>FNA Interiors is a design and execution studio based in Kochi. We bring together thoughtful planning, refined aesthetics and dependable craftsmanship to create spaces made for real life.</p>
+          <div class="stat-row">
+            <div class="stat"><b>10+</b><span>Years of experience</span></div>
+            <div class="stat"><b>250+</b><span>Spaces transformed</span></div>
+          </div>
+        </div>
+        <div class="about-img reveal">
+          <img src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=1200&q=85" alt="Warm contemporary living room">
+          <div class="about-card"><b>Design<br>that lasts.</b><p>Made for your everyday.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="services" id="services">
+      <div class="container">
+        <div class="section-head reveal">
+          <div><div class="eyebrow">What we do</div><h2>From blank canvas<br>to beautiful reality.</h2></div>
+          <p>One experienced team for every layer of your interior journey.</p>
+        </div>
+        <div class="service-grid reveal">
+          <article class="service"><div class="service-num">01</div><h3>Residential Interiors</h3><p>Homes shaped around your lifestyle, rituals and aspirations.</p></article>
+          <article class="service"><div class="service-num">02</div><h3>Commercial Interiors</h3><p>Distinctive workplaces and retail spaces designed to perform.</p></article>
+          <article class="service"><div class="service-num">03</div><h3>False Ceiling</h3><p>Architectural layers of light, proportion and quiet detail.</p></article>
+          <article class="service"><div class="service-num">04</div><h3>Custom Carpentry</h3><p>Made-to-measure furniture with precision and character.</p></article>
+          <article class="service"><div class="service-num">05</div><h3>Complete Solutions</h3><p>A seamless end-to-end experience, managed with care.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="projects" id="projects">
+      <div class="container">
+        <div class="project-head reveal">
+          <div><div class="eyebrow">Selected work</div><h2>Spaces that speak<br>for themselves.</h2></div>
+          <div class="filters"><button class="filter active" data-filter="all">All projects</button><button class="filter" data-filter="residential">Residential</button><button class="filter" data-filter="commercial">Commercial</button></div>
+        </div>
+        <div class="gallery reveal">
+          <article class="project-card tall" data-category="residential"><img src="https://images.unsplash.com/photo-1600607688969-a5bfcd646154?auto=format&fit=crop&w=1000&q=85" alt="Elegant living space"><div class="project-label"><small>Residential · Kochi</small><h3>The Courtyard Home</h3></div></article>
+          <article class="project-card" data-category="commercial"><img src="https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=900&q=85" alt="Modern office interior"><div class="project-label"><small>Commercial · Kakkanad</small><h3>Line & Form</h3></div></article>
+          <article class="project-card" data-category="residential"><img src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=900&q=85" alt="Minimal dining room"><div class="project-label"><small>Residential · Thrippunithura</small><h3>Soft Geometry</h3></div></article>
+          <article class="project-card wide" data-category="residential"><img src="https://images.unsplash.com/photo-1600210491892-03d54c0aaf87?auto=format&fit=crop&w=1400&q=85" alt="Luxury bedroom interior"><div class="project-label"><small>Residential · Aluva</small><h3>The Quiet House</h3></div></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="why">
+      <div class="container why-grid">
+        <div class="why-intro reveal"><div class="eyebrow">The FNA difference</div><h2>Good design begins with listening.</h2><p>Every project starts by understanding how you live, work and move through a space. The result is design that looks beautiful because it feels right.</p></div>
+        <div class="why-list reveal">
+          <div class="why-item"><b>01</b><h3>Understanding First</h3><p>We ask better questions before we draw the first line.</p></div>
+          <div class="why-item"><b>02</b><h3>Thoughtful Design</h3><p>Every material, colour and proportion has a reason.</p></div>
+          <div class="why-item"><b>03</b><h3>Quality Execution</h3><p>Clear coordination and skilled workmanship, down to the detail.</p></div>
+          <div class="why-item"><b>04</b><h3>Complete Experience</h3><p>One accountable partner from concept to handover.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="process">
+      <div class="container">
+        <div class="section-head reveal"><div><div class="eyebrow">How it works</div><h2>A clear path to<br>your finished space.</h2></div><p>Simple, transparent and guided at every step.</p></div>
+        <div class="process-grid reveal">
+          <div class="step"><span>01 / Begin</span><h3>Consultation</h3><p>We understand your needs, site and vision.</p></div>
+          <div class="step"><span>02 / Shape</span><h3>Design & Planning</h3><p>Ideas become detailed concepts, selections and plans.</p></div>
+          <div class="step"><span>03 / Build</span><h3>Execution</h3><p>Our team brings the design to life with precision.</p></div>
+          <div class="step"><span>04 / Enjoy</span><h3>Handover</h3><p>A considered final walkthrough, ready for life.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta" id="contact">
+      <div class="container reveal">
+        <div class="eyebrow" style="color:#ead1c1">Your next chapter starts here</div>
+        <h2>Ready to Transform<br>Your Space?</h2>
+        <p>Tell us a little about your project. We’ll take it from there.</p>
+        <a class="btn light" href="https://wa.me/919876543210?text=Hello%20FNA%20Interiors%2C%20I%27d%20like%20a%20free%20consultation." target="_blank">WhatsApp us <span class="arrow">↗</span></a>
+        <a class="btn light" href="mailto:hello@fnainteriors.com">Book a consultation</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand"><a class="logo" href="#home"><span class="logo-mark">F</span><span><strong>FNA</strong><small>INTERIORS</small></span></a><p>Interiors thoughtfully designed and beautifully executed in Kochi and across Kerala.</p></div>
+        <div class="footer-cols">
+          <div class="footer-col"><h4>Explore</h4><a href="#services">Services</a><a href="#projects">Projects</a><a href="#about">Our approach</a><a href="#contact">Contact</a></div>
+          <div class="footer-col"><h4>Get in touch</h4><p>Kochi, Kerala</p><a href="tel:+919876543210">+91 98765 43210</a><a href="mailto:hello@fnainteriors.com">hello@fnainteriors.com</a></div>
+          <div class="footer-col"><h4>Follow</h4><a href="#">Instagram ↗</a><a href="#">Facebook ↗</a><a href="#">Pinterest ↗</a></div>
+        </div>
+      </div>
+      <div class="footer-bottom"><span>© 2024 FNA Interiors. All rights reserved.</span><span>Made for meaningful spaces.</span></div>
+    </div>
+  </footer>
+
+  <button class="chat-toggle" id="chatToggle">✦ Chat with FNA Assistant</button>
+  <div class="chat-panel" id="chatPanel">
+    <div class="chat-head"><div><strong>FNA Assistant</strong><small>Typically replies instantly</small></div><button class="chat-close" id="chatClose">×</button></div>
+    <div class="chat-body" id="chatBody"><div class="msg bot">Hello, welcome to FNA Interiors. I can help you explore our services and arrange a consultation.</div><div class="msg bot">What kind of space are you planning?</div></div>
+    <div class="chat-actions"><input id="chatInput" placeholder="Type your answer..." autocomplete="off"><button id="chatSend">Send</button></div>
+  </div>
+
+  <script>
+    const menuBtn=document.getElementById('menuBtn'),nav=document.getElementById('navLinks');
+    menuBtn.onclick=()=>nav.classList.toggle('mobile');
+    document.querySelectorAll('.navlinks a').forEach(a=>a.onclick=()=>nav.classList.remove('mobile'));
+    document.querySelectorAll('.filter').forEach(btn=>btn.onclick=()=>{
+      document.querySelectorAll('.filter').forEach(b=>b.classList.remove('active'));btn.classList.add('active');
+      const val=btn.dataset.filter;
+      document.querySelectorAll('.project-card').forEach(card=>{card.style.display=val==='all'||card.dataset.category===val?'block':'none'});
+    });
+    const observer=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')}),{threshold:.12});
+    document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+
+    const panel=document.getElementById('chatPanel'),toggle=document.getElementById('chatToggle'),close=document.getElementById('chatClose'),body=document.getElementById('chatBody'),input=document.getElementById('chatInput'),send=document.getElementById('chatSend');
+    let step=0, answers=[];
+    toggle.onclick=()=>{panel.classList.toggle('open');if(panel.classList.contains('open'))input.focus()};
+    close.onclick=()=>panel.classList.remove('open');
+    const questions=[
+      "Where is the project located?",
+      "Tell me briefly about your requirements — for example, the rooms or services you need.",
+      "What is your approximate budget?",
+      "When would you like to begin?",
+      "Great. May I have your name?",
+      "And the best phone number to reach you on?"
+    ];
+    function add(text,type){const d=document.createElement('div');d.className='msg '+type;d.textContent=text;body.appendChild(d);body.scrollTop=body.scrollHeight}
+    function reply(){
+      const value=input.value.trim();if(!value)return;
+      add(value,'user');answers.push(value);input.value='';
+      setTimeout(()=>{
+        if(step<questions.length){add(questions[step],'bot');step++}
+        else {add("Thank you, "+answers[4]+". Our design team will contact you shortly at "+answers[5]+". You can also WhatsApp us directly for a faster response.",'bot');}
+      },450);
+    }
+    send.onclick=reply;input.onkeydown=e=>{if(e.key==='Enter')reply()};
+  </script>
+</body>
+</html>
